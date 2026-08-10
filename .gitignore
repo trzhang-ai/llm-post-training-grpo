@@ -1,0 +1,6 @@
+.DS_Store
+.ipynb_checkpoints/
+.env
+outputs/
+quick_train_grpo_logs.csv
+slow_train_grpo_logs.csv
