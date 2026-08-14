@@ -1,20 +1,22 @@
-# Project evidence
+# Qwen2.5 GRPO Letter-Counting: Evidence Record
 
-Reviewed on 2026-08-10 against the archived notebook, saved adapter, signed-in
-Udacity instructions, and project rubric.
+The experiment was reviewed on 2026-08-10 against the archived notebook, saved
+adapter, signed-in Udacity instructions, and project rubric. Portfolio-facing
+documentation was revised and rehashed on 2026-08-14; the executed notebook,
+adapter configuration, and adapter weights were not changed.
 
 ## Artifact integrity
 
 | Artifact | SHA-256 |
 |---|---|
 | `gen_ai_fundamentals_project_starter.ipynb` | `8b04d3c2fbeb32409461b242966965a2422fba7dcd945f263c9277302fa39162` |
-| `grpo_saved_lora/README.md` | `a8e1eaee63a10c975bf72d940143942c6ab10002b1c2bddaafe2f8a9069ff60a` |
+| `grpo_saved_lora/README.md` | `1bc3fb036fb96930977d1b9af98d2321a4f98c819390988dab98dbea8a121095` |
 | `grpo_saved_lora/adapter_config.json` | `bd6eede7fc52a400219b06587b1d59bcfa6ae3043ffd45808879c8e6178811a9` |
 | `grpo_saved_lora/adapter_model.safetensors` | `fcf0a5dbe652af529643d739b6ca5a9083ad68da22459b19d74609c95de38408` |
 
-## Rubric mapping
+## Implementation-to-evidence mapping
 
-| Rubric area | Archived evidence | Boundary |
+| Implementation area | Archived evidence | Boundary |
 |---|---|---|
 | LoRA model setup | Rank 16; seven projection modules; model instantiated and trained | Adapter training, not full-model training |
 | Prompting baseline | Blank and one-example Chain-of-Thought runs saved | The saved CoT example remained incorrect |
@@ -54,12 +56,12 @@ Udacity instructions, and project rubric.
 
 ## Safe project description
 
-> Completed a scaffolded Udacity LLM post-training project using 4-bit LoRA
-> and GRPO to adapt Qwen2.5-3B-Instruct for letter counting; implemented five
-> programmatic reward functions, ran a 200-step training session over 401
-> generated examples on a Tesla T4, monitored reward trends, and saved a PEFT
-> adapter. Results are training-batch evidence, not held-out accuracy or
-> production deployment.
+> Completed a bounded Qwen2.5 post-training experiment using 4-bit LoRA and
+> GRPO for structured letter counting; implemented five programmatic reward
+> functions, ran a 200-step session over 401 generated examples on a Tesla T4,
+> monitored reward trends, and saved a PEFT adapter. Results are training-batch
+> evidence, not held-out accuracy or production deployment. The implementation
+> began from an Udacity notebook scaffold.
 
 ## Unsupported claims
 

@@ -11,200 +11,94 @@ tags:
 - unsloth
 ---
 
-# Model Card for Model ID
+# Qwen2.5 Letter-Counting GRPO LoRA Adapter
 
-<!-- Provide a quick summary of what the model is/does. -->
+## Summary
 
+This PEFT adapter records a bounded post-training experiment on structured
+letter counting. It applies LoRA to a 4-bit Qwen2.5-3B-Instruct base model and
+uses GRPO with deterministic, programmatic rewards for response structure and
+counting correctness.
 
+This artifact is an experiment output, not a general-purpose upgraded Qwen
+model and not a production deployment.
 
-## Model Details
+## Model details
 
-### Model Description
+| Field | Value |
+| --- | --- |
+| Base model | `unsloth/qwen2.5-3b-instruct-unsloth-bnb-4bit` |
+| Adapter type | PEFT LoRA |
+| Rank / alpha | 16 / 16 |
+| Target modules | `q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, `down_proj` |
+| Trainable parameters | 29,933,568 |
+| Observed total parameters | 3,115,872,256 |
+| Trainable share | 0.96% |
+| Adapter format | safetensors |
+| Framework snapshot | PEFT 0.17.1, TRL, Transformers, Unsloth, vLLM |
 
-<!-- Provide a longer summary of what this model is. -->
+## Intended use
 
+The adapter is intended for technical review of a small, rule-verifiable GRPO
+experiment and for reproducing the saved letter-counting comparisons in the
+associated notebook. It may help illustrate LoRA configuration, programmatic
+reward design, training monitoring, and PEFT artifact export.
 
+It should not be used as evidence of general reasoning improvement, held-out
+task accuracy, safety, catastrophic-forgetting resistance, or production model
+quality.
 
-- **Developed by:** [More Information Needed]
-- **Funded by [optional]:** [More Information Needed]
-- **Shared by [optional]:** [More Information Needed]
-- **Model type:** [More Information Needed]
-- **Language(s) (NLP):** [More Information Needed]
-- **License:** [More Information Needed]
-- **Finetuned from model [optional]:** [More Information Needed]
+## Training data and objective
 
-### Model Sources [optional]
+Training used 401 generated records, each pairing a word with a target letter.
+The target response spells the word one character per numbered line, maintains
+a running occurrence count, and ends with a final count. Five deterministic
+reward functions score numbering, spelling, running counts, output format, and
+final-answer correctness.
 
-<!-- Provide the basic links for the model. -->
+The longer run used:
 
-- **Repository:** [More Information Needed]
-- **Paper [optional]:** [More Information Needed]
-- **Demo [optional]:** [More Information Needed]
-
-## Uses
-
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-
-### Direct Use
-
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
-
-[More Information Needed]
-
-### Downstream Use [optional]
-
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
-
-[More Information Needed]
-
-### Out-of-Scope Use
-
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
-
-[More Information Needed]
-
-## Bias, Risks, and Limitations
-
-<!-- This section is meant to convey both technical and sociotechnical limitations. -->
-
-[More Information Needed]
-
-### Recommendations
-
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
-
-Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
-
-## How to Get Started with the Model
-
-Use the code below to get started with the model.
-
-[More Information Needed]
-
-## Training Details
-
-### Training Data
-
-<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
-
-[More Information Needed]
-
-### Training Procedure
-
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
-
-#### Preprocessing [optional]
-
-[More Information Needed]
-
-
-#### Training Hyperparameters
-
-- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
-
-#### Speeds, Sizes, Times [optional]
-
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
-
-[More Information Needed]
+- 200 training steps;
+- learning rate `0.0001`;
+- beta `0.001`;
+- per-device batch size `4`;
+- four generations per prompt;
+- gradient accumulation steps `1`;
+- one observed NVIDIA Tesla T4;
+- saved runtime of 29 minutes 12 seconds.
 
 ## Evaluation
 
-<!-- This section describes the evaluation protocols and provides the results. -->
+The retained training table shows mean total reward increasing from `3.86881`
+over the first 20 steps to `4.77946` over the last 20. Mean final-answer reward
+increased from `0.7125` to `0.95` over the same windows.
 
-### Testing Data, Factors & Metrics
+These are training-batch metrics, not held-out task accuracy. The only saved
+base-versus-adapter counting comparison was answered correctly by both models,
+so it does not establish that the adapter outperformed the base model. One
+capital-city prompt is only a smoke test.
 
-#### Testing Data
+## Limitations
 
-<!-- This should link to a Dataset Card if possible. -->
+- No held-out evaluation, multi-seed comparison, ablation, or confidence
+  interval is available.
+- The saved Chain-of-Thought baseline example still miscounted `engage`.
+- The training data are generated and narrow in scope.
+- Programmatic rewards are not human preferences or a learned reward model;
+  this is not RLHF.
+- The repository records observed package versions but does not provide a
+  tested, fully locked GPU environment.
+- Base-model risks, license terms, and limitations continue to apply.
 
-[More Information Needed]
+## Reproduction record
 
-#### Factors
+See `../gen_ai_fundamentals_project_starter.ipynb` for the retained setup,
+reward checks, saved training outputs, plots, and comparisons. See
+`../PROJECT_EVIDENCE.md` for exact artifact hashes and claim boundaries.
 
-<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
+## Provenance and rights
 
-[More Information Needed]
-
-#### Metrics
-
-<!-- These are the evaluation metrics being used, ideally with a description of why. -->
-
-[More Information Needed]
-
-### Results
-
-[More Information Needed]
-
-#### Summary
-
-
-
-## Model Examination [optional]
-
-<!-- Relevant interpretability work for the model goes here -->
-
-[More Information Needed]
-
-## Environmental Impact
-
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
-
-Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
-
-- **Hardware Type:** [More Information Needed]
-- **Hours used:** [More Information Needed]
-- **Cloud Provider:** [More Information Needed]
-- **Compute Region:** [More Information Needed]
-- **Carbon Emitted:** [More Information Needed]
-
-## Technical Specifications [optional]
-
-### Model Architecture and Objective
-
-[More Information Needed]
-
-### Compute Infrastructure
-
-[More Information Needed]
-
-#### Hardware
-
-[More Information Needed]
-
-#### Software
-
-[More Information Needed]
-
-## Citation [optional]
-
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
-
-**BibTeX:**
-
-[More Information Needed]
-
-**APA:**
-
-[More Information Needed]
-
-## Glossary [optional]
-
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
-
-[More Information Needed]
-
-## More Information [optional]
-
-[More Information Needed]
-
-## Model Card Authors [optional]
-
-[More Information Needed]
-
-## Model Card Contact
-
-[More Information Needed]
-### Framework versions
-
-- PEFT 0.17.1
+Tianrui Zhang produced this adapter while completing a scaffolded Udacity
+learning project. No new license is granted for the adapter, base model,
+starter materials, or third-party code; consult each upstream source's terms
+before reuse or redistribution.
