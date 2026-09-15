@@ -1,4 +1,4 @@
-# Qwen2.5 GRPO Letter-Counting Adaptation
+# LLM Post-Training with Verifiable Rewards
 
 An evidence-backed parameter-efficient post-training experiment that adapts
 Qwen2.5-3B-Instruct to follow a structured letter-counting procedure. The
@@ -75,7 +75,7 @@ mapping and exact saved values.
 
 ## Repository contents
 
-- `gen_ai_fundamentals_project_starter.ipynb`: executed experiment notebook
+- `grpo_letter_counting.ipynb`: executed experiment notebook
   with prompts, reward checks, training logs, plots, and comparisons.
 - `grpo_saved_lora/adapter_model.safetensors`: saved LoRA adapter in Git LFS.
 - `grpo_saved_lora/adapter_config.json`: PEFT configuration.
@@ -83,8 +83,8 @@ mapping and exact saved values.
 - `PROJECT_EVIDENCE.md`: artifact-backed evaluation and claim boundaries.
 - `CHECKSUMS.sha256`: integrity hashes for the reviewed artifacts.
 
-The executed notebook is retained as an experiment record, including original
-instructional prompts and saved outputs. It is not presented as a clean-room
+The executed notebook is retained as an experiment record, with revised explanatory text and unchanged
+executable statements and saved outputs. It is not presented as a clean-room
 implementation or a fully reproducible environment.
 
 ## Observed environment

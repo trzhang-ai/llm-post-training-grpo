@@ -5,12 +5,17 @@ adapter, signed-in Udacity instructions, and project rubric. Portfolio-facing
 documentation was revised and rehashed on 2026-08-14; the executed notebook,
 adapter configuration, and adapter weights were not changed.
 
+On 2026-09-16 the notebook was renamed to `grpo_letter_counting.ipynb` and
+its explanatory text and comments were revised. Executable statements and
+saved outputs were compared with the previous revision and are unchanged.
+The hashes below describe the current files; earlier hashes remain in Git history.
+
 ## Artifact integrity
 
 | Artifact | SHA-256 |
 |---|---|
-| `gen_ai_fundamentals_project_starter.ipynb` | `8b04d3c2fbeb32409461b242966965a2422fba7dcd945f263c9277302fa39162` |
-| `grpo_saved_lora/README.md` | `1bc3fb036fb96930977d1b9af98d2321a4f98c819390988dab98dbea8a121095` |
+| `grpo_letter_counting.ipynb` | `03ced90e7eb903e696811adebc081c2a666430907c152a4c6c730446b8db5acb` |
+| `grpo_saved_lora/README.md` | `ed412fe025d0a4f83143f4c3aa8de7170a20bfd8ed071135431daacb33a0385d` |
 | `grpo_saved_lora/adapter_config.json` | `bd6eede7fc52a400219b06587b1d59bcfa6ae3043ffd45808879c8e6178811a9` |
 | `grpo_saved_lora/adapter_model.safetensors` | `fcf0a5dbe652af529643d739b6ca5a9083ad68da22459b19d74609c95de38408` |
 

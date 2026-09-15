@@ -92,7 +92,7 @@ capital-city prompt is only a smoke test.
 
 ## Reproduction record
 
-See `../gen_ai_fundamentals_project_starter.ipynb` for the retained setup,
+See `../grpo_letter_counting.ipynb` for the retained setup,
 reward checks, saved training outputs, plots, and comparisons. See
 `../PROJECT_EVIDENCE.md` for exact artifact hashes and claim boundaries.
 
