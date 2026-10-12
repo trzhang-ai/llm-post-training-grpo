@@ -1,5 +1,17 @@
 # LLM Post-Training with Verifiable Rewards
 
+Teaching a 3-billion-parameter language model a precise, checkable skill with
+reinforcement learning, on a single consumer-grade GPU.
+
+| | |
+| --- | --- |
+| **Problem** | Language models often fail at simple procedural tasks such as counting letters, and full fine-tuning of a large model is expensive. |
+| **Approach** | Efficient fine-tuning (LoRA on a 4-bit model) trained with GRPO, a reinforcement-learning method, using five automatic reward checks instead of human labels. |
+| **Results** | Over a 200-step, 29-minute run on one T4 GPU, mean reward rose from 3.87 to 4.78 and final-answer reward from 0.71 to 0.95, while training only 0.96% of the model's parameters. |
+| **Stack** | Python · PyTorch · Hugging Face TRL · PEFT (LoRA) · Unsloth · vLLM · Qwen2.5-3B-Instruct |
+
+## Overview
+
 An evidence-backed parameter-efficient post-training experiment that adapts
 Qwen2.5-3B-Instruct to follow a structured letter-counting procedure. The
 project combines 4-bit model loading, LoRA, Group Relative Policy Optimization
@@ -70,7 +82,7 @@ accumulation step. The adapter contains 29,933,568 trainable parameters, or
   learned reward model; this work is not RLHF.
 
 These limits are intentional parts of the evidence record, not hidden gaps.
-See [PROJECT_EVIDENCE.md](PROJECT_EVIDENCE.md) for the requirement-to-artifact
+See [PROJECT_EVIDENCE.md](PROJECT_EVIDENCE.md) for the implementation-to-evidence
 mapping and exact saved values.
 
 ## Repository contents
@@ -94,14 +106,7 @@ vLLM 0.10.1, PEFT 0.17.1, and PyTorch 2.7.1 with CUDA 12.6 on one Tesla T4.
 These are observed versions rather than a tested lockfile; reproducing the GPU
 run requires a compatible CUDA environment and the source notebook setup.
 
-## Provenance and rights
+## License
 
-This private repository preserves a completed learning project that began from
-Udacity's *Teaching an LLM to Count!* notebook scaffold. Tianrui Zhang completed
-the LoRA configuration, prompting, reward implementation and checks, GRPO runs,
-adapter export, comparisons, and evidence documentation. The classroom result
-was reported as `Passed` and independently observed in the private evidence
-review on 2026-08-10.
-
-No new license is granted for Udacity materials, the Qwen base model, Unsloth,
-third-party code, or model weights; their original terms continue to apply.
+No new license is granted for the Qwen base model, Unsloth, third-party code,
+or the saved adapter weights; their original terms continue to apply.

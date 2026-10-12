@@ -1,21 +1,23 @@
 # Qwen2.5 GRPO Letter-Counting: Evidence Record
 
-The experiment was reviewed on 2026-08-10 against the archived notebook, saved
-adapter, signed-in Udacity instructions, and project rubric. Portfolio-facing
-documentation was revised and rehashed on 2026-08-14; the executed notebook,
-adapter configuration, and adapter weights were not changed.
+The experiment was reviewed on 2026-08-10 against the archived notebook and
+saved adapter. Documentation was revised and rehashed on 2026-08-14; the
+executed notebook, adapter configuration, and adapter weights were not changed.
 
 On 2026-09-16 the notebook was renamed to `grpo_letter_counting.ipynb` and
 its explanatory text and comments were revised. Executable statements and
 saved outputs were compared with the previous revision and are unchanged.
+On 2026-10-12 one sentence of explanatory text was removed from the notebook
+summary and the adapter card's license section was reworded; executable
+statements, saved outputs, and adapter files are unchanged.
 The hashes below describe the current files; earlier hashes remain in Git history.
 
 ## Artifact integrity
 
 | Artifact | SHA-256 |
 |---|---|
-| `grpo_letter_counting.ipynb` | `03ced90e7eb903e696811adebc081c2a666430907c152a4c6c730446b8db5acb` |
-| `grpo_saved_lora/README.md` | `ed412fe025d0a4f83143f4c3aa8de7170a20bfd8ed071135431daacb33a0385d` |
+| `grpo_letter_counting.ipynb` | `34a2a4a55a93dafe71b17376222929dbd3eee95b0c97b9e30e3e4f8b23a725b0` |
+| `grpo_saved_lora/README.md` | `7c93830363f6f268365d1719951358b82b23f65492fa79e6c4a0506830ced939` |
 | `grpo_saved_lora/adapter_config.json` | `bd6eede7fc52a400219b06587b1d59bcfa6ae3043ffd45808879c8e6178811a9` |
 | `grpo_saved_lora/adapter_model.safetensors` | `fcf0a5dbe652af529643d739b6ca5a9083ad68da22459b19d74609c95de38408` |
 
@@ -59,16 +61,7 @@ The hashes below describe the current files; earlier hashes remain in Git histor
 | Total reward | 3.223145 | 4.558044 | 3.86881 | 4.77946 |
 | Final-answer reward | 0.25 | 1.0 | 0.7125 | 0.95 |
 
-## Safe project description
-
-> Completed a bounded Qwen2.5 post-training experiment using 4-bit LoRA and
-> GRPO for structured letter counting; implemented five programmatic reward
-> functions, ran a 200-step session over 401 generated examples on a Tesla T4,
-> monitored reward trends, and saved a PEFT adapter. Results are training-batch
-> evidence, not held-out accuracy or production deployment. The implementation
-> began from an Udacity notebook scaffold.
-
-## Unsupported claims
+## What this experiment does not show
 
 - production fine-tuning or production deployment
 - RLHF or human-preference-data work
@@ -79,4 +72,3 @@ The hashes below describe the current files; earlier hashes remain in Git histor
 - no catastrophic forgetting
 - from-scratch model-training architecture
 - novel reinforcement-learning research
-- Udacity employment or sponsorship

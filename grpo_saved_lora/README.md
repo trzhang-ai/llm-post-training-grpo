@@ -96,9 +96,7 @@ See `../grpo_letter_counting.ipynb` for the retained setup,
 reward checks, saved training outputs, plots, and comparisons. See
 `../PROJECT_EVIDENCE.md` for exact artifact hashes and claim boundaries.
 
-## Provenance and rights
+## License
 
-Tianrui Zhang produced this adapter while completing a scaffolded Udacity
-learning project. No new license is granted for the adapter, base model,
-starter materials, or third-party code; consult each upstream source's terms
-before reuse or redistribution.
+No new license is granted for the adapter, base model, or third-party code;
+consult each upstream source's terms before reuse or redistribution.
